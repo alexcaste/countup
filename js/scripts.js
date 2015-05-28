@@ -1,8 +1,7 @@
-var result = function(input, countby) {
+var countUp = function(input, countby) {
   var output = []
   var score = 0
 
-// debugger;
   for (var i = countby; i <= input ; i++) {
     var countby = countby
     var score = countby + score
@@ -14,3 +13,19 @@ var result = function(input, countby) {
     }
   }
 };
+
+$(document).ready(function() {
+  $("form#counter").submit(function(event) {
+    $(".input").empty();
+    $(".upby").empty();
+    var userinput = parseInt($("input#input").val());
+    var upby = parseInt($("input#upby").val());
+    var result = countUp(userinput, upby);
+
+    $(".result").text(result);
+
+    $("#result").show();
+
+    event.preventDefault();
+  });
+});
